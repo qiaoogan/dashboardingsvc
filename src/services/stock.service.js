@@ -5,6 +5,11 @@ const getHealth = async() => {
     return response;
 };
 
+const getBooks = async() => {
+    const response = await stockClient.getBooks();
+    return response;
+};
+
 module.exports = {
-    getHealth
+    getHealth, getBooks
 }

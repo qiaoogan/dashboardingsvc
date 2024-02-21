@@ -21,7 +21,20 @@ router.get("/books/health", [
     })
 );
 
+router.get("/stock/book", [],
+catchAsync(async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(StatusCodes.BAD_REQUEST).json(generalResponse(errors.array()).failed);
+    }
+    
+    const response = await stockService.getBooks();
 
+    console.log("****"+(typeof JSON.stringify(response)))
 
+    return res.status(StatusCodes.OK).json(response);
+})
+);
 
 module.exports = router;
+

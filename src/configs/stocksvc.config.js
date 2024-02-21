@@ -1,6 +1,8 @@
 module.exports = {
     HOST: "http://localhost:8901",
     HEALTH_PATH: "/health",
-    BATH_PATH: "/stock"
+    BATH_PATH: "/stock",
+    BOOK_PATH: "/book",
+    
 }
 

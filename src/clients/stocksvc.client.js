@@ -1,18 +1,20 @@
 const httpUtls = require("../utils/http.utils");
 const stockConfig = require("../configs/stocksvc.config");
 
-const heathUrl = () => {
-    return `${stockConfig.HOST}${stockConfig.HEALTH_PATH}`;
-}
-
-const buildUrl = resourcePath => {
-  return `${stockConfig.HOST}${stockConfig.BATH_PATH}${resourcePath}`;
+const buildUrl = (bathPath, resourcePath) => {
+  return `${stockConfig.HOST}${bathPath}${resourcePath}`;
 };
 
 const getHealth = async () => {
-    const url = heathUrl();
+    const url = buildUrl("", stockConfig.HEALTH_PATH);
     const response = await httpUtls.get(url);
     console.log(response);
+    return response;
+};
+
+const getBooks = async () => {
+    const url = buildUrl(stockConfig.BATH_PATH, stockConfig.BOOK_PATH)
+    const response = await httpUtls.get(url);
     return response;
 };
 
@@ -61,5 +63,5 @@ const getHealth = async () => {
 // };
 
 module.exports = {
-    getHealth
+    getHealth, getBooks
 }

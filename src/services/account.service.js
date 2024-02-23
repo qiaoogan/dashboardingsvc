@@ -1,48 +1,62 @@
 const mongoose = require("mongoose");
 const { AccountSchema } = require("../models/account.model");
 const { accountUuid } = require("../utils/uuid.utils");
+const { param } = require("express-validator");
 
 const Account = new mongoose.model('Account', AccountSchema);
 
-// const fetchBooks = async () => {
-//     return await Book.find({});
-// };
+const searchAccount = async (condition) => {
+    return await Account.findOne(condition);
+};
 
-// const searchBooks = async (condition) => {
-//     return await Book.find(condition);
-// };
+const getAccount = async () => {
+    return await Account.findOne();
+};
 
-// const getBook = async (bid) => {
-//     return await Book.findOne({bid});
-// };
+const updateAccount = async (filterOptions, updateOptions) => {
+    const response = await Account.updateOne(filterOptions, updateOptions);
+    return response.modifiedCount;
+};
 
-// const updateBook = async (filterOptions, updateOptions) => {
-//     const res = await Book.updateOne(filterOptions, updateOptions);
-//     return res.modifiedCount;
-// };
-
-const createAccount = async (parma) => {
+const createAccount = async (param) => {
     const newAccount = await Account();
+
     newAccount.aid = accountUuid();
-    // newBook.title = title;
-    // newBook.author = author;
-    // newBook.price = price;
-    // newBook.publishedAt = publishedAt;
+    newAccount.firstName = param.firstName;
+    newAccount.lastName = param.lastName;
+    newAccount.email = param.email;
+    newAccount.org = param.org;
+    newAccount.phone = param.phone;
+    newAccount.address = param.address;
+    newAccount.state = param.state;
+    newAccount.zip = param.zip;
+    newAccount.country = param.country;
+    newAccount.language = param.language;
+    newAccount.timezone = param.timezone;
+    newAccount.currency = param.currency;
 
     await newAccount.save();
     return newAccount;
 };
 
-// const deleteBook = async (bid) => {
-//     const  res = await Book.deleteOne({bid});
-//     return res.deletedCount;
-// };
+const checkAndCreateDefaultAccount = async (param) => {
+    
+    const condition = { firstName: param.firstName, lastName: param.lastName };
+    const account = await searchAccount(condition);
+
+    if (account) {
+        console.info(`Default account fistName=${account.firstName}, lastName=${account.lastName} already exist`);
+        return 
+    }
+
+    await createAccount(param);
+    console.info(`Default account doesn't exist, created new one.`);
+}
 
 module.exports = {
-    // fetchBooks,
-    // searchBooks,
-    // getBook,
+    getAccount,
+    searchAccount,
+    updateAccount,
     createAccount,
-    // deleteBook,
-    // updateBook
+    checkAndCreateDefaultAccount,
 }

@@ -12,6 +12,8 @@ const logger = require("./utils/logger.utils");
 const morganMiddleware = require("./middlewares/morgan.middleware");
 
 const databaseUtils = require("./utils/database.utils");
+const accountService = require("./services/account.service");
+const dataUtils = require("./utils/fixedData.utils");
 
 const app = express();
 
@@ -29,6 +31,9 @@ databaseUtils.connect();
 
 const port = 3101;
 app.listen(port, () => {
+    (async () => { 
+        await accountService.checkAndCreateDefaultAccount(dataUtils.defaultAccount); 
+    })();
     logger.info(`Dashboarding service is running at ${port}`);
 })
 

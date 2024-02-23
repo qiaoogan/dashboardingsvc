@@ -23,29 +23,41 @@ router.post("/account", [
     })
 );
 
-// get route return account
-router.get("/account", [],catchAsync(async (req, res, next) => {
+// get default account
+router.get("/account/default", [], catchAsync(async (req, res, next) => {
     
     const response = await accountService.getAccount();
     if (!response) {
         throw new Error("User not found");
     }
     return res.status(StatusCodes.OK).json(response);
-})
-);
+}));
 
-// update route update account
-router.put("/account", [],catchAsync(async (req, res, next) => {
-    const { aid, _id, __v, ...updateData } = req.body; 
+// search account
+router.get("/account", [], catchAsync(async (req, res, next) => {
+    
+    const response = await accountService.searchAccount({ aid: req.query.aid });
 
-    const response = await accountService.updateAccount({"aid":aid}, {$set: updateData});
+    if (response) {
+        return res.status(StatusCodes.OK).json(response);
+    } else {
+        console.info(`User not found with aid=${req.query.aid}`);
+        return res.status(StatusCodes.NOT_FOUND).json({});
+    }
+    
+}));
 
-    if (response.nModified === 1) {
+// update account
+router.put("/account", [], catchAsync(async (req, res, next) => {
+    const { aid, ...updateData } = req.body; 
+
+    const modifiedCount = await accountService.updateAccount({"aid":aid}, {$set: updateData});
+
+    if (modifiedCount === 1) {
         return res.status(StatusCodes.OK).json({ message: 'Account updated successfully' });
     } else {
         return res.status(StatusCodes.NOT_FOUND).json({ message: 'Account not found' });
     }
-})
-);
+}));
 
 module.exports = router;

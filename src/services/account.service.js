@@ -6,11 +6,29 @@ const { param } = require("express-validator");
 const Account = new mongoose.model('Account', AccountSchema);
 
 const searchAccount = async (condition) => {
-    return await Account.findOne(condition);
+    const account = await Account.findOne(condition);
+
+    return { 
+        aid: account.aid,
+        firstName: account.firstName,
+        lastName: account.lastName,
+        email: account.email,
+        org: account.org,
+        phone: account.phone,
+        address: account.address,
+        state: account.state,
+        zip: account.zip,
+        country: account.country,
+        language: account.language,
+        timezone: account.timezone,
+        currency: account.currency,
+    }
 };
 
 const getAccount = async () => {
-    return await Account.findOne();
+    const acount = await Account.findOne();
+
+    return { aid: acount.aid }
 };
 
 const updateAccount = async (filterOptions, updateOptions) => {

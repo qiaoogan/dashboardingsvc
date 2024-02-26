@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashbackend-depl
+  labels:
+    app: dashbackend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dashbackend
+  template:
+    metadata:
+      labels:
+        app: dashbackend
+    spec:
+      containers:
+      - name: dashbackend
+        image: dashboardingsvc:0.0.1
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DASHBOARD_BACKEND_ENV
+          value: prod
+        - name: STOCKSERVICE_HOST
+          value: ezl-backendpy-svc
+        - name: STOCKSERVICE_PORT
+          value: 8101
+        - name: DASHBOARDINGSVC_DB_HOST
+          value: mongodb-svc
+        - name: DASHBOARDINGSVC_DB_PORT
+          value: 27017
+        - name: DASHBACKEND_VERSION
+          valueFrom:
+            configMapKeyRef:
+              name: dashbackend-config
+              key: DASHBACKEND_VERSION
+        
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dashbackend-svc
+spec:
+  type: NodePort
+  selector:
+    app: dashbackend
+  ports:
+  - protocol: TCP
+    port: 8102
+    targetPort: 3101
+    nodePort: 31102

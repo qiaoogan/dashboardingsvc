@@ -25,11 +25,11 @@ spec:
         - name: STOCKSERVICE_HOST
           value: ezl-backendpy-svc
         - name: STOCKSERVICE_PORT
-          value: 8101
+          value: '8101'
         - name: DASHBOARDINGSVC_DB_HOST
           value: mongodb-svc
         - name: DASHBOARDINGSVC_DB_PORT
-          value: 27017
+          value: '27017'
         - name: DASHBACKEND_VERSION
           valueFrom:
             configMapKeyRef:

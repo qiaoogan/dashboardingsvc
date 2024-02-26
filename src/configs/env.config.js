@@ -7,6 +7,7 @@ switch (process.env.DASHBOARDINGSVC_ENV) {
         break;
     default:
         mongodbUrl = 'mongodb://127.0.0.1:29009/dashboardingsvcdb';
+        console.log("*******", mongodbUrl)
         break;
 }
 

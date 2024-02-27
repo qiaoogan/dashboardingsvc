@@ -7,9 +7,7 @@ const Account = new mongoose.model('Account', AccountSchema);
 
 const searchAccount = async (condition) => {
     const account = await Account.findOne(condition);
-    console.log("*********", account)
     if(account){
-        console.log("********* if account", account)
         return { 
             aid: account.aid,
             firstName: account.firstName,

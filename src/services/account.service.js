@@ -7,22 +7,25 @@ const Account = new mongoose.model('Account', AccountSchema);
 
 const searchAccount = async (condition) => {
     const account = await Account.findOne(condition);
-
-    return { 
-        aid: account.aid,
-        firstName: account.firstName,
-        lastName: account.lastName,
-        email: account.email,
-        org: account.org,
-        phone: account.phone,
-        address: account.address,
-        state: account.state,
-        zip: account.zip,
-        country: account.country,
-        language: account.language,
-        timezone: account.timezone,
-        currency: account.currency,
+    if(account){
+        return { 
+            aid: account.aid,
+            firstName: account.firstName,
+            lastName: account.lastName,
+            email: account.email,
+            org: account.org,
+            phone: account.phone,
+            address: account.address,
+            state: account.state,
+            zip: account.zip,
+            country: account.country,
+            language: account.language,
+            timezone: account.timezone,
+            currency: account.currency,
+        }
     }
+    return account
+    
 };
 
 const getAccount = async () => {

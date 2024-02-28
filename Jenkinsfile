@@ -18,7 +18,7 @@ pipeline {
         stage('Package') {
             steps {
                 echo 'Package for placeholder'
-                sh "docker build --tag=backendpy:0.0.${BUILD_NUMBER} ."
+                sh "docker build --tag=dashboardingsvc:0.0.${BUILD_NUMBER} ."
                 sh "docker image ls"
             }
         }

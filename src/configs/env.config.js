@@ -1,6 +1,6 @@
 let mongodbUrl;
 
-switch (process.env.DASHBOARDINGSVC_ENV) {
+switch (process.env.DASHBOARD_BACKEND_ENV) {
     case "containerized":
         mongodbUrl = `mongodb://${process.env.DASHBOARDINGSVC_DB_HOST}:${process.env.DASHBOARDINGSVC_DB_PORT}/dashboardingsvcdb`;
         console.log("*******", mongodbUrl)

@@ -11,11 +11,11 @@ docker build --tag=dashboardingsvc:0.0.${BUILD_NUMBER} .
 # Continus Deployment
 # deploy Development envrionment
 kubectl apply -f ./deployment/configMap.yaml
-kubectl patch configmap/fastaping-config \
+kubectl patch configmap/dashbackend-config \
     --type merge \
-    -p "{\"data\":{\"FASTAPING_VERSION\":\"0.0.${BUILD_NUMBER}\"}}"
+    -p "{\"data\":{\"DASHBACKEND_VERSION\":\"0.0.${BUILD_NUMBER}\"}}"
 kubectl apply -f ./deployment/deploysvc.yaml
-kubectl set image deployment/ezl-backendpy-depl ezl-backendpy=backendpy:0.0.${BUILD_NUMBER}
+kubectl set image deployment/dashbackend-depl dashbackend=dashboardingsvc:0.0.${BUILD_NUMBER}
 
 # Automation Test - smoke test 10%
 

@@ -29,7 +29,7 @@ app.use("/tables", tablesRounter);
 
 databaseUtils.connect();
 
-const port = 3101;
+const port = 3102;
 app.listen(port, () => {
     (async () => { 
         await accountService.checkAndCreateDefaultAccount(dataUtils.defaultAccount); 

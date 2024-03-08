@@ -32,3 +32,6 @@ dist-ssr
 
 # iconify dist files
 src/@iconify/icons-bundle.js
+apiTest/allure_report
+apiTest/allure_results
+apiTest/test_environment/allure.zip

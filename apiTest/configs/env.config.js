@@ -1,6 +1,6 @@
 let host;
-switch (process.env.DASHBOARD_BACKEND_ENV) {
-    case "containerized":
+switch (process.env.TEST_ENV) {
+    case "container":
         host = `http://${process.env.STOCKSERVICE_HOST}:${process.env.STOCKSERVICE_PORT}`;
         host_account = `http:${process.env.STOCKSERVICE_HOST}:${process.env.BACKENDSEVER_PORT}`;
         break;

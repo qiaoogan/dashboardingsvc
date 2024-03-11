@@ -2,6 +2,7 @@
 
 echo "tests ran in container"
 rm -rf allure-results && pwd && ls -al
+npm install
 npm run test
 test_exit_code=$?
 

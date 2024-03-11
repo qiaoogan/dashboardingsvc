@@ -3,7 +3,7 @@ WORKDIR /home/testenv
 
 COPY ./requirements.txt .
 RUN apk add bash curl openjdk11
-RUN pip install -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com  -r requirements.txt
+RUN npm install -g jest
 
 COPY ./allure.zip .
 RUN unzip allure.zip -d allure

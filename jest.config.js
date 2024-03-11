@@ -148,7 +148,7 @@ const config = {
   testEnvironment: "allure-jest/node",
 
   // Options that will be passed to the testEnvironment
-  testEnvironmentOptions: {resultsDir: "./apiTest/allure-results"},
+  testEnvironmentOptions: {resultsDir: "allure-results"},
 
   // Adds a location field to test results
   // testLocationInResults: false,

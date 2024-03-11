@@ -1,9 +1,10 @@
 #!/bin/bash
 
-docker container run \
+docker run \
   --rm \
   --mount type=bind,source="$(pwd)",target=/home/mount \
   -e TEST_ENV="container" \
-  -e TEST_HOST="http://192.168.5.143:31101" \
-  qiaoogan/papitestenv:0.0.6 \
-  bash /home/mount/tests-entry.sh
+  -e STOCKSERVICE_HOST="192.168.5.143" \
+  -e STOCKSERVICE_PORT="31102" \
+  nodejestenv:0.0.1 \
+  bash /home/mount/apiTest/tests-entry.sh

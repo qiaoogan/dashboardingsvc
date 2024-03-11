@@ -41,12 +41,21 @@ pipeline {
         stage('API Tests') {
             steps {
                 echo 'API tests for placeholder'
+                sh "sleep 5"
+                sh "pwd && ls -al"
+                sh "pwd && ls -al"
+                sh "bash ./apiTest/test-in-container-cloud.sh"
             }
         }
         stage('Deploy UAT') {
             steps {
                 echo 'Deploy UAT for placeholder'
             }
+        }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: 'allure-report/**/*', allowEmptyArchive: true, fingerprint: true
         }
     }
 }

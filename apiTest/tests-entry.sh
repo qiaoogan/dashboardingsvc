@@ -16,3 +16,4 @@ if [ $test_exit_code -ne 0 ] || [ $last_exit_code -ne 0 ]; then
     exit 1
 else
     echo "Test Completed"
+fi

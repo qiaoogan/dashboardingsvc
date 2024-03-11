@@ -5,7 +5,7 @@ const { book } = require('../configs/test.data')
 
 test("test dashbackend application is ready", ()=>{
     return getHealth().then(data=>{
-        expect(data).toEqual({ alive: true, version: expect.any()})
+        expect(data).toEqual({ alive: true, version: expect.anything()})
     })
 })
 

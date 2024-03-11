@@ -11,6 +11,7 @@ const buildAccountUrl = (bathPath, resourcePath, bookName="") => {
 
 const getHealth = async () => {
     const url = buildUrl("", envConfig.HEALTH_PATH);
+    console.log(url)
     const response = await httpUtls.get(url);
     return response;
 };

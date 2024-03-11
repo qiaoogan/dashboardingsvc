@@ -18,11 +18,11 @@ const book = {
 };
 
 const defaultAccount = {
-  firstName: 'Dogger',
-  lastName: 'Piggy',
+  firstName: 'Doggering',
+  lastName: 'Piggyyy',
   email: 'dogger@piggy.com',
   org: 'MyHome',
-  phone: '+86 13550300441',
+  phone: '+86 13550300443',
   address: '123 Some Place on the Earth',
   state: 'Si Chuan',
   zip: '9090950',
@@ -33,7 +33,7 @@ const defaultAccount = {
 }
 
 const defaultAccountAid = {
-  "aid": "AID4E3C27C3061249D7B0212F51DB31454F"
+  "aid": "AID9E7D5C1CA3034F2DA4DA8A771D8AC80B"
 }
 
 module.exports = {book, defaultAccount,defaultAccountAid};

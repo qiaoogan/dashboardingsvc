@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Build for placeholder'
+                // checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'git@github.com:qiaoogan/fastaping.git']])
+                sh "pwd & ls"
+                sh "echo $USER & docker -v & kubectl version"
+            }
+        }
+        stage('API Tests') {
+            steps {
+                echo 'API tests for placeholder'
+                sh "pwd && ls -al"
+                dir("apiTest") {
+                    // timeout(time: 2, unit: 'MINUTES') {
+                    //     sh "bash health-check-cloud.sh"
+                    // }
+
+                    sh "pwd && ls -al"
+                    sh "bash test-in-container-cloud.sh"
+                }
+            }
+        }
+        stage('Deploy UAT') {
+            steps {
+                echo 'Deploy UAT for placeholder'
+            }
+        }
+    }
+}

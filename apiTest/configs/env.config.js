@@ -6,7 +6,7 @@ switch (process.env.TEST_ENV) {
         break;
     default:
         host = 'http://localhost:8901';
-        host_account = 'http://localhost:3102';
+        host_account = 'http://localhost:3101';
         break;
 }
 

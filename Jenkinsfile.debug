@@ -20,7 +20,7 @@ pipeline {
                     // }
 
                     sh "pwd && ls -al"
-                    sh "bash test-in-container-cloud.sh"
+                    sh "bash ./apiTest/test-in-container-cloud.sh"
                 //}
             }
         }

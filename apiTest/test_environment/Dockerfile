@@ -1,7 +1,6 @@
 FROM node:21-alpine
 WORKDIR /home/testenv
 
-COPY ./requirements.txt .
 RUN apk add bash curl openjdk11
 RUN npm install -g jest
 

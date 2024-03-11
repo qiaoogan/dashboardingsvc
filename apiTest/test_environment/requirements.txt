@@ -1,3 +1,0 @@
-jest==29.7.0
-allure-pytest==2.13.2
-allure-python-commons==2.13.2

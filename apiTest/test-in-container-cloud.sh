@@ -7,4 +7,4 @@ docker run \
   -e STOCKSERVICE_HOST="192.168.5.143" \
   -e STOCKSERVICE_PORT="31102" \
   qiaoogan/nodejestenv:0.0.1 \
-  bash /home/mount/tests-entry.sh
+  bash /home/mount/apiTest/tests-entry.sh

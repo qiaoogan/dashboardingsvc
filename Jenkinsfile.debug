@@ -14,14 +14,14 @@ pipeline {
             steps {
                 echo 'API tests for placeholder'
                 sh "pwd && ls -al"
-                dir("apiTest") {
+                //dir("apiTest") {
                     // timeout(time: 2, unit: 'MINUTES') {
                     //     sh "bash health-check-cloud.sh"
                     // }
 
                     sh "pwd && ls -al"
                     sh "bash test-in-container-cloud.sh"
-                }
+                //}
             }
         }
         stage('Deploy UAT') {
